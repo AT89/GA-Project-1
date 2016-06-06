@@ -8,7 +8,11 @@ var deck = [];
 assignValue(); //first assign values and images
 shuffle(deck); //shuffle the deck (create button later)
 initialDeal(); //deals 26 to each player
-draw();
+
+function play(){
+    draw();
+    battle();
+}
 
 function assignValue(){ // assign value and images to cards (while still ordered)
             var value = 0;
@@ -54,7 +58,7 @@ function draw(){
         p1Active = p1Deck[0];
         p2Active = p2Deck[0];
         console.log("p1 card is "+ p1Active.value +" and p2 card is "+ p2Active.value +".");
-        return p1Active, p2Active;
+        return [p1Active, p2Active];
     }
 }
 
@@ -65,14 +69,18 @@ function battle(){
     }
     if (p1Active.value > p2Active.value){ //p1 wins
         console.log("p1 wins");
+        // empty out active card slots and place it at end of p1Deck
+        p1Deck = p1Deck.concat(p1Active, p2Active);
+        p1Deck.splice(0,1);
+        p2Deck.splice(0,1);
     }
     else if (p1Active.value < p2Active.value){ //p2 wins
         console.log("p2 wins");
+        // same thing as above but for p2Deck
+        p2Deck = p2Deck.concat(p2Active, p1Active);
+        p1Deck.splice(0,1);
+        p2Deck.splice(0,1);
     }
-}
-
-function deadPileDeal(){
-    //deal the deadpile into hand
 }
 
 function tieBreaker(){
