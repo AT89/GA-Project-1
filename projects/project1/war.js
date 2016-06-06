@@ -3,6 +3,7 @@ var p1Deck;
 var p2Deck;
 var p1Active;
 var p2Active;
+var gameInProgress = true;
 
 var deck = [];
 assignValue(); //first assign values and images
@@ -45,6 +46,10 @@ function shuffle(array) { //credits to Fisher Yates shuffle https://bost.ocks.or
   return array;
 }
 
+function stackedDeal(){ //function to test out 2 even decks (to test out tiebreaker) use every 2n to deal 2 to p1 and 2 to p2 alernating
+
+}
+
 function initialDeal(){
     // when the deck is clicked, it will shuffle and  deal 26 cards to each player
     p1Deck = deck.slice(0, 26);
@@ -54,7 +59,15 @@ function initialDeal(){
 
 function draw(){
     // when player1 clicks on his deck, the top card from both decks will draw
-    while (p1Deck.length > 0 || p2Deck.length > 0){ //WRONG SYNTAX
+    if (p1Deck.length === 0){ //if p1 has no cards, p2 lose
+        console.log("p1 Wins the game")
+        gameInProgress = false;
+    }
+    if (p2Deck.length === 0){ //if p2 has no cardsm p2 lose
+        console.log("p2 Wins the game")
+        gameInProgress = false;
+    }
+    while (gameInProgress && (p1Deck.length > 0 || p2Deck.length > 0)){
         p1Active = p1Deck[0];
         p2Active = p2Deck[0];
         console.log("p1 card is "+ p1Active.value +" and p2 card is "+ p2Active.value +".");
@@ -68,14 +81,14 @@ function battle(){
         tieBreaker();
     }
     if (p1Active.value > p2Active.value){ //p1 wins
-        console.log("p1 wins");
+        console.log("p1 wins round");
         // empty out active card slots and place it at end of p1Deck
         p1Deck = p1Deck.concat(p1Active, p2Active);
         p1Deck.splice(0,1);
         p2Deck.splice(0,1);
     }
     else if (p1Active.value < p2Active.value){ //p2 wins
-        console.log("p2 wins");
+        console.log("p2 wins round");
         // same thing as above but for p2Deck
         p2Deck = p2Deck.concat(p2Active, p1Active);
         p1Deck.splice(0,1);
@@ -84,6 +97,50 @@ function battle(){
 }
 
 function tieBreaker(){
-    // occurs when the value of the cards are the same, both players draw 3 cards and then flips the 4th one over and that is the playing cards
-    //function can repeat itself if the 4th card is a draw
-}
+    tieRound = 1; // this variable represents the number of tie rounds.. in case it goes into tie again
+    cardNum = 4;
+    var maxNumberOfRounds = 13; // fail safe to stop it from infinite looping
+        while(tieRound < maxNumberOfRounds){
+            // if (p1Deck.length < 4){ //use last card when less than 4
+            //     var last = p1Deck.length-1; // set variable last to the last item in remaining array
+            //     if p1Deck[last].value > p2Deck[4].value{ //p1 wins
+            //     break
+            //     }
+            //     else if p1Deck[last].value < p2Deck[4].value{ //p1 lose
+            //     break
+            //     }   //I gave up on this, made my head hurt
+            //
+            // }
+            // if (p2Deck.length < 4){//fill with above, replace p1 with p2
+
+            // IF A  less than 4 CARDS left
+                //      ALERT "GAME OVER"
+                //      gameInProgress = false
+                //      BREAK
+                if p1Deck.length < 4 { //whoever has less than 4 cards on tie breaker loses
+                    console.log
+                    break
+                }
+                if p2Deck.length < 4  {
+
+                    break
+                }
+
+                i = tieRound * cardNum; //i will be 4th card position first tie, 8th next tie. Kept it as i variable so we can keep track of how much to splice
+                p1 = p1Deck[i].value
+                p2 = p2Deck[i].value
+                if (p1 === p2){ //tie in a tie breaker..
+                    tieRound++; //tieception counter
+                    //SLICE THIS TO A DEAD PILE
+                // occurs when the value of the cards are the same, both players draw 3 cards and then flips the 4th one over and that is the playing cards
+                //function can repeat itself if the 4th card is a draw
+                if (p1Deck[i].value > p2Deck[i].value){ //p1 wins tie breaker
+                    // p1Deck = p1Deck.concat((p1Deck.))
+                    break
+                }
+                if (p1Deck[i].value < p2Deck[i].value){ //p2 wins tie breaker
+                    break
+                }
+            }
+        }
+    }
