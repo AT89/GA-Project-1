@@ -4,42 +4,22 @@ var p2Deck;
 var p1DeadPile;
 var p2DeadPile;
 
-var deck =[
-    "2C", "2D", "2H", "2S",
-    "3C", "3D", "3H", "3S",
-    "4C", "4D", "4H", "4S",
-    "5C", "5D", "5H", "5S",
-    "6C", "6D", "6H", "6S",
-    "7C", "7D", "7H", "7S",
-    "8C", "8D", "8H", "8S",
-    "9C", "9D", "9H", "9S",
-    "9C", "9D", "9H", "9S",
-    "10C", "10D", "10H", "10S",
-    "JC", "JD", "JH", "JS", //JACK
-    "QC", "QD", "QH", "QS", //QUEEN
-    "KC", "KD", "KH", "KS", //KING
-    "AC", "AD", "AH", "AS", //ACE
-];
+var deck = [];
+assignValue(); //first assign values and images
+shuffle(deck); //shuffle the deck (create button later)
+initialDeal();
 
 function assignValue(){ // assign value and images to cards (while still ordered)
-        var i = 0;
-        var value = 1;
-        while (i < deck.length) {
-            if (i%4 == 0){ //assigns a Card number value, making sure its every 4th
-            value++;
+            var value = 0;
+            for (i = 1; i < 53; i++){
+            var card = {}
+            card.value = value; //how to create object property for value
+            if (i%4 === 0){
+                value++;
             }
-        deck[i].value = value; //how to create object property for value
-        deck[i].img = "cards/" +i+ ".png";
-        console.log("assigning value to card and image");
-        i++;
-        }
-}
-
-function assignImg(){ // assigns images WIP
-        var i = 0;
-        while (i < deck.length) {
-        deck[i].img = img[i];
-        i++;
+            card.img = "cards/" +i+ ".png";
+            deck.push(card);
+            console.log(card);
         }
 }
 
@@ -63,6 +43,13 @@ function shuffle(array) { //credits to Fisher Yates shuffle https://bost.ocks.or
 
 function initialDeal(){
     // when the deck is clicked, it will shuffle and  deal 26 cards to each player
+    var p1Deck = deck.slice(0, 26);
+    var p2Deck = deck.slice(26, 52);
+    return [p1Deck, p2Deck];
+}
+
+function deadPileDeal(){
+    //deal the deadpile into hand
 }
 
 function draw(){
@@ -76,4 +63,4 @@ function battle(){
 function tieBreaker(){
     // occurs when the value of the cards are the same, both players draw 3 cards and then flips the 4th one over and that is the playing cards
     //function can repeat itself if the 4th card is a draw
-}
+};
