@@ -4,3 +4,7 @@ body
     margin-left: auto;
     margin-right: auto;
 }
+img.Deck{
+    height: 10%;
+    width: 10%;
+}
