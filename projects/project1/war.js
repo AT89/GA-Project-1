@@ -1,14 +1,14 @@
 var fullDeck;
 var p1Deck;
 var p2Deck;
-var p1DeadPile;
-var p2DeadPile;
+var p1Active;
+var p2Active;
 
 var deck = [];
 assignValue(); //first assign values and images
 shuffle(deck); //shuffle the deck (create button later)
 initialDeal(); //deals 26 to each player
-
+draw();
 
 function assignValue(){ // assign value and images to cards (while still ordered)
             var value = 0;
@@ -43,29 +43,31 @@ function shuffle(array) { //credits to Fisher Yates shuffle https://bost.ocks.or
 
 function initialDeal(){
     // when the deck is clicked, it will shuffle and  deal 26 cards to each player
-    var p1Deck = deck.slice(0, 26);
-    var p2Deck = deck.slice(26, 52);
+    p1Deck = deck.slice(0, 26);
+    p2Deck = deck.slice(26, 52);
     return [p1Deck, p2Deck];
 }
 
 function draw(){
     // when player1 clicks on his deck, the top card from both decks will draw
     while (p1Deck.length > 0 || p2Deck.length > 0){ //WRONG SYNTAX
-        var p1Active = p1Deck[0];
-        var p2Active = p2Deck[0];
+        p1Active = p1Deck[0];
+        p2Active = p2Deck[0];
+        console.log("p1 card is "+ p1Active.value +" and p2 card is "+ p2Active.value +".");
         return p1Active, p2Active;
     }
 }
 
 function battle(){
     // will evaluate whoevers drawn card is higher and take both cards and put it in the winner's deadpile
-    if (p1Deck.value[0] === p2deck.value[0]){
+    if (p1Active.value === p2Active.value){
         tieBreaker();
     }
-    if (p1Deck.value[0] > p2deck.value[0]){ //p1 wins
-
+    if (p1Active.value > p2Active.value){ //p1 wins
+        console.log("p1 wins");
     }
-    else if (p1Deck.value[0] < p2deck.value[0]){ //p2 wins
+    else if (p1Active.value < p2Active.value){ //p2 wins
+        console.log("p2 wins");
     }
 }
 
