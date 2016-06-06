@@ -1,28 +1,8 @@
-$(document).ready(function(){
-
 var fullDeck;
 var p1Deck;
 var p2Deck;
 var p1DeadPile;
 var p2DeadPile;
-
-
-function initialDeal(){
-    // when the deck is clicked, it will shuffle and  deal 26 cards to each player
-}
-
-function draw(){
-    // when player1 clicks on his deck, the top card from both decks will draw
-}
-
-function battle(){
-    // will evaluate whoevers drawn card is higher and take both cards and put it in the winner's deadpile
-}
-
-function tieBreaker(){
-    // occurs when the value of the cards are the same, both players draw 3 cards and then flips the 4th one over and that is the playing cards
-    //function can repeat itself if the 4th card is a draw
-}
 
 var deck =[
     "2C", "2D", "2H", "2S",
@@ -48,12 +28,14 @@ function assignValue(){ // assign value and images to cards (while still ordered
             if (i%4 == 0){ //assigns a Card number value, making sure its every 4th
             value++;
             }
-        deck[i].value = value;
+        deck[i].value = value; //how to create object property for value
+        deck[i].img = "cards/" +i+ ".png";
+        console.log("assigning value to card and image");
         i++;
         }
 }
 
-function assignImg(){ // assigns images
+function assignImg(){ // assigns images WIP
         var i = 0;
         while (i < deck.length) {
         deck[i].img = img[i];
@@ -78,4 +60,20 @@ function shuffle(array) { //credits to Fisher Yates shuffle https://bost.ocks.or
 
   return array;
 }
-}; // last one from doc rdy
+
+function initialDeal(){
+    // when the deck is clicked, it will shuffle and  deal 26 cards to each player
+}
+
+function draw(){
+    // when player1 clicks on his deck, the top card from both decks will draw
+}
+
+function battle(){
+    // will evaluate whoevers drawn card is higher and take both cards and put it in the winner's deadpile
+}
+
+function tieBreaker(){
+    // occurs when the value of the cards are the same, both players draw 3 cards and then flips the 4th one over and that is the playing cards
+    //function can repeat itself if the 4th card is a draw
+}
