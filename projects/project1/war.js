@@ -46,7 +46,18 @@ function shuffle(array) { //credits to Fisher Yates shuffle https://bost.ocks.or
   return array;
 }
 
-function stackedDeal(){ //function to test out 2 even decks (to test out tiebreaker) use every 2n to deal 2 to p1 and 2 to p2 alernating
+function stackedDeal(array){ //function to test out 2 even decks (to test out tiebreaker) use every 2n to deal 2 to p1 and 2 to p2 alernating
+    i = 1;
+    var m = array.length;
+    counter = 0;
+    while (counter <= m){
+        var p1Deal = counter;
+        var p2Deal = 2*counter;
+        array[p1Deal] = push to p1Deck
+        array[p2Deal] = push to p2Deck
+        counter++;
+    }
+    return [p1Deck, p2Deck]
 
 }
 
@@ -117,12 +128,14 @@ function tieBreaker(){
                 //      ALERT "GAME OVER"
                 //      gameInProgress = false
                 //      BREAK
-                if p1Deck.length < 4 { //whoever has less than 4 cards on tie breaker loses
-                    console.log
+                if (p1Deck.length < 4) { //whoever has less than 4 cards on tie breaker loses
+                    console.log("P1 is defeated");
+                    gameInProgress = false;
                     break
                 }
-                if p2Deck.length < 4  {
-
+                if (p2Deck.length < 4)  {
+                    console.log("P2 is defeated");
+                    gameInProgress = false;
                     break
                 }
 
@@ -130,15 +143,15 @@ function tieBreaker(){
                 p1 = p1Deck[i].value
                 p2 = p2Deck[i].value
                 if (p1 === p2){ //tie in a tie breaker..
-                    tieRound++; //tieception counter
-                    //SLICE THIS TO A DEAD PILE
+                    tieRound++; //tie rounds counter
                 // occurs when the value of the cards are the same, both players draw 3 cards and then flips the 4th one over and that is the playing cards
                 //function can repeat itself if the 4th card is a draw
-                if (p1Deck[i].value > p2Deck[i].value){ //p1 wins tie breaker
+                if (p1.value > p2.value){ //p1 wins tie breaker
                     // p1Deck = p1Deck.concat((p1Deck.))
+                    // slice cardNum
                     break
                 }
-                if (p1Deck[i].value < p2Deck[i].value){ //p2 wins tie breaker
+                if (p1.value < p2.value){ //p2 wins tie breaker
                     break
                 }
             }
