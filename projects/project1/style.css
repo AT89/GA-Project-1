@@ -5,6 +5,7 @@ body
     margin-right: auto;
     background-color: green;
     color: white;
+    position: relative;
 }
 
 .card {
@@ -16,6 +17,7 @@ body
 .card img {
     width: 50%;
     height: auto;
+    position: relative;
 }
 #p2Active{
     float: left;
@@ -39,4 +41,8 @@ body
 #p1Deck{
     margin-left:auto;
     margin-right:0;
+    border: 10px solid red;
+}
+#p2Deck{
+    border: 10px solid red;
 }

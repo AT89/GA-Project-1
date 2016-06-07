@@ -1,6 +1,6 @@
 var fullDeck;
-var p1Deck;
-var p2Deck;
+var p1Deck = [];
+var p2Deck = [];
 var p1Active;
 var p2Active;
 var gameInProgress = true;
@@ -9,7 +9,7 @@ var deck = [];
 assignValue(); //first assign values and images
 shuffle(deck); //shuffle the deck (create button later)
 initialDeal(); //deals 26 to each player
-// stackedDeal(deck);
+// stackedDeal(deck); //intiate stackedDeal (alt deal), turn off initial deal and shuffle for this to work
 
 function play(){
     draw();
@@ -52,11 +52,11 @@ function stackedDeal(array){ //function to test out 2 even decks (to test out ti
     counter = 0;
     while (counter < m){
         if (counter%2 === 0){
-            p1Deck = p1Deck.push(array[counter]); //says p1Deck.append is not a function
+            p1Deck.push(array[counter]); //says p1Deck.append is not a function
             counter++;
         }
         else {
-            p2Deck = p2Deck.push(array[counter]);
+            p2Deck.push(array[counter]);
             counter++;
         }
     }
@@ -116,22 +116,6 @@ function tieBreaker(){
     cardNum = 4;
     var maxNumberOfRounds = 13; // fail safe to stop it from infinite looping
         while(tieRound < maxNumberOfRounds){
-            // if (p1Deck.length < 4){ //use last card when less than 4
-            //     var last = p1Deck.length-1; // set variable last to the last item in remaining array
-            //     if p1Deck[last].value > p2Deck[4].value{ //p1 wins
-            //     break
-            //     }
-            //     else if p1Deck[last].value < p2Deck[4].value{ //p1 lose
-            //     break
-            //     }   //I gave up on this, made my head hurt
-            //
-            // }
-            // if (p2Deck.length < 4){//fill with above, replace p1 with p2
-
-            // IF A  less than 4 CARDS left
-                //      ALERT "GAME OVER"
-                //      gameInProgress = false
-                //      BREAK
                 if (p1Deck.length < 4) { //whoever has less than 4 cards on tie breaker loses
                     console.log("P1 is defeated");
                     gameInProgress = false;
@@ -150,16 +134,25 @@ function tieBreaker(){
                     tieRound++; //tie rounds counter
                 // occurs when the value of the cards are the same, both players draw 3 cards and then flips the 4th one over and that is the playing cards
                 //function can repeat itself if the 4th card is a draw
-                if (p1.value > p2.value){ //p1 wins tie breaker
-                    var winCards;
-                    WinCards = push.p1Deck.splice(0,i); //hlep
-                    Wincards = push.p2Deck.splice(0,i);
-                    p1Deck = push.Wincards;
-                    break
-                }
-                if (p1.value < p2.value){ //p2 wins tie breaker
-                    break
-                }
+                    if (p1.value > p2.value){ //p1 wins tie breaker
+                        var winCards = [];
+                        winCards.push(p1Deck.splice(0,i));
+                        wincards.push(p2Deck.splice(0,i));
+                        p1Deck.push(winCards);
+                        break
+                    }
+                    if (p1.value < p2.value){ //p2 wins tie breaker
+                        var winCards = [];
+                        winCards.push(p1Deck.splice(0,i));
+                        wincards.push(p2Deck.splice(0,i));
+                        p2Deck.push(winCards);
+                        break //code hangs atm, trace where its stuck, by placing console.logs
+                    }
             }
         }
     }
+$("#p1Deck").on("click", function(){
+    draw();
+    battle();
+    console.log("PLAY");
+});
