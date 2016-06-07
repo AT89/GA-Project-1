@@ -9,6 +9,7 @@ var deck = [];
 assignValue(); //first assign values and images
 shuffle(deck); //shuffle the deck (create button later)
 initialDeal(); //deals 26 to each player
+// stackedDeal(deck);
 
 function play(){
     draw();
@@ -47,19 +48,22 @@ function shuffle(array) { //credits to Fisher Yates shuffle https://bost.ocks.or
 }
 
 function stackedDeal(array){ //function to test out 2 even decks (to test out tiebreaker) use every 2n to deal 2 to p1 and 2 to p2 alernating
-    i = 1;
     var m = array.length;
     counter = 0;
-    while (counter <= m){
-        var p1Deal = counter;
-        var p2Deal = 2*counter;
-        array[p1Deal] = push to p1Deck
-        array[p2Deal] = push to p2Deck
-        counter++;
+    while (counter < m){
+        if (counter%2 === 0){
+            p1Deck = p1Deck.push(array[counter]); //says p1Deck.append is not a function
+            counter++;
+        }
+        else {
+            p2Deck = p2Deck.push(array[counter]);
+            counter++;
+        }
     }
     return [p1Deck, p2Deck]
-
 }
+
+
 
 function initialDeal(){
     // when the deck is clicked, it will shuffle and  deal 26 cards to each player
@@ -147,8 +151,10 @@ function tieBreaker(){
                 // occurs when the value of the cards are the same, both players draw 3 cards and then flips the 4th one over and that is the playing cards
                 //function can repeat itself if the 4th card is a draw
                 if (p1.value > p2.value){ //p1 wins tie breaker
-                    // p1Deck = p1Deck.concat((p1Deck.))
-                    // slice cardNum
+                    var winCards;
+                    WinCards = push.p1Deck.splice(0,i); //hlep
+                    Wincards = push.p2Deck.splice(0,i);
+                    p1Deck = push.Wincards;
                     break
                 }
                 if (p1.value < p2.value){ //p2 wins tie breaker
