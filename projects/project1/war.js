@@ -19,13 +19,13 @@ function play(){
 function assignValue(){ // assign value and images to cards (while still ordered)
             var value = 0;
             for (i = 1; i < 53; i++){
-            var card = {}
+            var card = {} //build an object to store value
             card.value = value; //how to create object property for value
             if (i%4 === 0){
                 value++;
             }
             card.img = "cards/" +i+ ".png";
-            deck.push(card);
+            deck.push(card); //push the card objects (value and image )to the deck
             console.log(card);
         }
 }

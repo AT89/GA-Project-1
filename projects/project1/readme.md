@@ -10,7 +10,7 @@ User stories for War
         When a player has less than 4 cards, they will have their showing card the last card
     Animations for all the actions
     Winner/Loser declarations animated in the middle
-    DEAD/Discrd pile and LIVE pile of cards or have it shuffle everytime?
+    DEAD/Discard pile and LIVE pile of cards or have it shuffle everytime?
 
     Cool:
     I want to see really cool animations
