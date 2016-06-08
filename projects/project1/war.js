@@ -87,7 +87,7 @@ function draw(){
         p2Active = p2Deck[0];
         console.log("p1 card is "+ p1Active.value +" and p2 card is "+ p2Active.value +".");
         $("#p1CardImg").attr("src", p1Active.img); //show p1Active card
-        $("#p2CardImg").attr("src", p2Active.img); 
+        $("#p2CardImg").attr("src", p2Active.img);
         return [p1Active, p2Active];
     }
 }
@@ -130,7 +130,7 @@ function tieBreaker(){
                     break
                 }
 
-                i = tieRound * cardNum; //i will be 4th card position first tie, 8th next tie. Kept it as i variable so we can keep track of how much to splice
+                i = tieRound * cardNum; //i will be 4th card first tie, 8th next tie. Kept it as i variable so we can keep track of how much to splice
                 var p1 = p1Deck[i-1].value; //i-1 to acount for position 1 being 0. still the 4th card.
                 var p2 = p2Deck[i-1].value;
                 if (p1 === p2){ //tie in a tie breaker..
