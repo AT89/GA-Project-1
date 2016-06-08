@@ -112,6 +112,7 @@ function battle(){
 }
 
 function tieBreaker(){
+    console.log("WAR!!!!!!!!")
     tieRound = 1; // this variable represents the number of tie rounds.. in case it goes into tie again
     cardNum = 4;
     var maxNumberOfRounds = 13; // fail safe to stop it from infinite looping
@@ -128,8 +129,8 @@ function tieBreaker(){
                 }
 
                 i = tieRound * cardNum; //i will be 4th card position first tie, 8th next tie. Kept it as i variable so we can keep track of how much to splice
-                p1 = p1Deck[i].value
-                p2 = p2Deck[i].value
+                var p1 = p1Deck[i-1].value; //i-1 to acount for position 1 being 0. still the 4th card.
+                var p2 = p2Deck[i-1].value;
                 if (p1 === p2){ //tie in a tie breaker..
                     tieRound++; //tie rounds counter
                 // occurs when the value of the cards are the same, both players draw 3 cards and then flips the 4th one over and that is the playing cards

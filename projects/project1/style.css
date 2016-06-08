@@ -1,8 +1,6 @@
 body
 {
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
     background-color: green;
     color: white;
     position: relative;
@@ -30,19 +28,30 @@ body
 }
 #active
 {
-    width:250px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 250px;
+    height: 250px;
+    margin:0 auto;
+    border: 5px solid yellow;
+    position: absolute;
+    top: 220px;
+    right: 350px;
 }
 #board{
-    width: 800px;
-    height: 400px;
+    margin:0 auto;
+    width: 700px;
+    height: 600px;
+    border: 5px solid blue;
 }
 #p1Deck{
-    margin-left:auto;
-    margin-right:0;
-    border: 10px solid red;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    border: 5px solid red;
 }
 #p2Deck{
-    border: 10px solid red;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    border: 5px solid red;
 }
