@@ -78,7 +78,7 @@ function draw(){
         console.log("p1 Wins the game")
         gameInProgress = false;
     }
-    if (p2Deck.length === 0){ //if p2 has no cardsm p2 lose
+    if (p2Deck.length === 0){ //if p2 has no cards p2 lose
         console.log("p2 Wins the game")
         gameInProgress = false;
     }
@@ -86,6 +86,8 @@ function draw(){
         p1Active = p1Deck[0];
         p2Active = p2Deck[0];
         console.log("p1 card is "+ p1Active.value +" and p2 card is "+ p2Active.value +".");
+        $("#p1CardImg").attr("src", p1Active.img); //show p1Active card
+        $("#p2CardImg").attr("src", p2Active.img); 
         return [p1Active, p2Active];
     }
 }
@@ -152,8 +154,27 @@ function tieBreaker(){
             }
         }
     }
+function p1CreateHand(){
+    i = 0;
+    while (i < p1Deck.length){
+    $("#p1Holder").append("<div id='p1Hand'></div>")
+    i++;
+    }
+}
+function p2CreateHand(){
+    i = 0;
+    while (i < p2Deck.length){
+    $("#p2Holder").append("<div id='p2Hand'></div>")
+    i++;
+    }
+}
+
 $("#p1Deck").on("click", function(){
+    $('#p1Holder div').html(''); //clears the hand viewer
+    $('#p2Holder div').html('');
     draw();
     battle();
+    p1CreateHand();
+    p2CreateHand();
     console.log("PLAY");
 });
