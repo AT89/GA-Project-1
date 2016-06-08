@@ -6,8 +6,8 @@ var p2Active;
 var gameInProgress = true;
 var prize = [];
 var deck = [];
-var p1Spree;
-var p2Spree;
+var p1Spree = 0;
+var p2Spree = 0;
 
 assignValue(); //first assign values and images
 shuffle(deck); //shuffle the deck (create button later)
@@ -91,7 +91,6 @@ function draw(){
 }
 
 function battle(){
-    if (gameInProgress = true){
         // will evaluate whoevers drawn card is higher and take both cards and put it in the winner's deadpile
         if (p1Active.value === p2Active.value){
             tieBreaker();
@@ -102,7 +101,9 @@ function battle(){
             p1Deck = p1Deck.concat(p1Active, p2Active);
             p1Deck.splice(0,1);
             p2Deck.splice(0,1);
-                if (prize.length > 0){
+            p1Spree++;
+            p2Spree = 0;
+                if (prize.length > 0){ //if there is an array in the prize, give it to winner!
                     p1Deck = p1Deck.concat(prize);
                     prize.splice(0,52);
                     createPrize();
@@ -117,6 +118,8 @@ function battle(){
             p2Deck = p2Deck.concat(p2Active, p1Active);
             p1Deck.splice(0,1);
             p2Deck.splice(0,1);
+            p1Spree++;
+            p2Spree = 0;
                 if (prize.length > 0){
                     p2Deck = p2Deck.concat(prize);
                     prize.splice(0,52);
@@ -127,7 +130,7 @@ function battle(){
         }
 
     }
-}
+
 
 
 function tieBreaker(){
@@ -148,21 +151,23 @@ function tieBreaker(){
 function p1CreateHand(){
     i = 0;
     while (i < p1Deck.length){
-        $("#p1Holder").append("<div class='p1Hand'></div>")
-        i++;
+        // $("#p1Holder").append("<div class='p1Hand'></div>")
+        $("#p1Holder").append("<div class='p1Hand'> <img src='Zredback.png'/></div>");
+        i++
+
         }
 }
 function p2CreateHand(){
     i = 0;
     while (i < p2Deck.length){
-        $("#p2Holder").append("<div class='p2Hand'></div>")
+        $("#p2Holder").append("<div class='p2Hand'> <img src='Zblueback.png'/></div>");
         i++;
         }
 }
 function createPrize(){
     i = 0;
     if (i < prize.length){
-        $("#prizeHolder").append("<div class='prize'></div>")
+        $("#prizeHolder").append("<div class='prize'> <img src='Zredback.png'/></div>");
         i++
     }
     else{
@@ -173,23 +178,45 @@ function createPrize(){
 function spreeCheck(){ //win combos announcements
     if (p1Spree > 3){
         // P1 IS ON A SPREE
-        console.log("P1 IS ON A SPREE")
+        console.log("P1 IS ON A SPREE");
     }
     if (p2Spree > 3){
         // P2 IS ON A SPREE
-        console.log("P2 IS ON A SPREE")
+        console.log("P2 IS ON A SPREE");
     }
 }
 
 
 $("#p1Deck").on("click", function(){
-    $('#p1Holder').html(''); //clears the hand viewer
-    $('#p2Holder').html('');
-    draw();
-    battle();
-    p1CreateHand();
-    p2CreateHand();
-    spreeCheck();
-    console.log("PLAY");
+    if (gameInProgress=true){
+        $('#p1Holder').html(''); //clears the hand viewer
+        $('#p2Holder').html('');
+        draw();
+        battle();
+        p1CreateHand();
+        p2CreateHand();
+        spreeCheck();
+        console.log("PLAY");
+        $("#scoreHolder").html("Player2 Cards: "+p2Deck.length+"</br> Player1 Cards: "+p1Deck.length);
+    }
+    else{
+        alert("Game Over");
+    }
+});
 
+$("#p2Deck").on("click", function(){
+    if (gameInProgress=true){
+        $('#p1Holder').html(''); //clears the hand viewer
+        $('#p2Holder').html('');
+        draw();
+        battle();
+        p1CreateHand();
+        p2CreateHand();
+        spreeCheck();
+        console.log("PLAY");
+        $("#scoreHolder").html("Player2 Cards: "+p2Deck.length+"</br> Player1 Cards: "+p1Deck.length);
+    }
+    else{
+        alert("Game Over");
+    }
 });
