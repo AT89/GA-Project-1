@@ -5,22 +5,29 @@ body
     color: white;
     position: relative;
 }
-
+h1{
+    font-size: 50px;
+}
 .card {
-    width: 200px;
+    width: 80px;
     height: 120px;
+    z-index: 1;
+}
+.cardP {
+    width: 80px;
+    height: 120px;
+    z-index: 1;
 }
 
 /* resize images */
 .card img {
-    width: 50%;
+    width: 100px;
     height: auto;
     position: relative;
 }
 .cardA img {
     width: 40%;
     height: auto;
-
 }
 
 .hidden{
@@ -29,7 +36,6 @@ body
 #active{
     width: 300px;
     height: 300px;
-    border: 5px solid yellow;
 }
 #board{
     display: flex;
@@ -38,77 +44,71 @@ body
     margin:0 auto;
     width: 700px;
     height: 700px;
-    border: 5px solid blue;
 }
 #p1Deck{
     position: absolute;
-    bottom: 0;
-    right: 0;
-    border: 5px solid red;
-}
-#p1Deck:hover{
-    -webkit-transform: scale(1.3);
-    -ms-transform: scale(1.3);
-    transform: scale(1.3);
-}
-#p2Deck:hover{
-    -webkit-transform: scale(1.3);
-    -ms-transform: scale(1.3);
-    transform: scale(1.3);
+    transform-origin: 150% 100%;
+    bottom: 50px;
+    right: 55px;
+
 }
 #p2Deck{
+    transform-origin: -10% -10%;
     position: absolute;
-    top: 50px;
-    left: 0;
-    border: 5px solid red;
+    top: 100px;
+    left: 50px;
 }
 .p1Hand{
     width: 20px;
     height: 70px;
-    flex-grow: 1;
-
 }
 .p2Hand{
     width: 20px;
     height: 70px;
-    flex-grow: 1;
-
+}
+#p1Deck:hover{
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2);
+}
+#p2Deck:hover{
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2);
 }
 #p1Holder{
-    border: 5px solid purple;
     width: 800px;
     height: 100px;
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 10%;
     display: flex;
     flex-direction: row-reverse;
 }
 #p2Holder{
-    border: 5px solid orange;
     width: 800px;
     height: 100px;
     position: absolute;
-    right: 0;
+    right: 10%;
     display: flex;
 }
 #prizeHolder{
-    border: 5px solid pink;
     width: 100px;
     height: 300px;
     position: absolute;
     top: 250px;
+    left: 50px;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 .prize{
     width: 20px;
-    height: 70px;
+    height: 10px;
     flex-grow: 1;
+    flex-direction: column;
+
 }
 #scoreHolder{
-    border: 5px solid pink;
     width: 200px;
     height: 200px;
     position: absolute;

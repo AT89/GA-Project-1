@@ -8,6 +8,10 @@ var prize = [];
 var deck = [];
 var p1Spree = 0;
 var p2Spree = 0;
+var p1Name = prompt("Player 1 Name?");
+var p2Name = prompt("Player 1 Name?");
+// p2Name = 'Player 2';
+// p1Name = 'Player 1';
 
 assignValue(); //first assign values and images
 shuffle(deck); //shuffle the deck (create button later)
@@ -31,13 +35,10 @@ function assignValue(){ // assign value and images to cards (while still ordered
 
 function shuffle(array) { //credits to Fisher Yates shuffle https://bost.ocks.org/mike/shuffle/
   var m = array.length, t, i;
-
   // While there remain elements to shuffle…
   while (m) {
-
     // Pick a remaining element…
     i = Math.floor(Math.random() * m--);
-
     // And swap it with the current element.
     t = array[m];
     array[m] = array[i];
@@ -62,8 +63,6 @@ function stackedDeal(array){ //function to test out 2 even decks (to test out ti
     return [p1Deck, p2Deck]
 }
 
-
-
 function initialDeal(){
     p1Deck = deck.slice(0, 26);
     p2Deck = deck.slice(26, 52);
@@ -72,13 +71,13 @@ function initialDeal(){
 
 function draw(){
     // when player1 clicks on his deck, the top card from both decks will draw
-    if (p1Deck.length === 0){ //if p1 has no cards, p2 lose
-        console.log("p2 Wins the game")
-        gameInProgress = false;
+    if (p1Deck.length === 0){ //if p1 has no cards, p2 wins
+        alert("p2 Wins the game")
+        return gameInProgress = false;
     }
     if (p2Deck.length === 0){ //if p2 has no cards p2 lose
-        console.log("p1 Wins the game")
-        gameInProgress = false;
+        alert("p1 Wins the game")
+        return gameInProgress = false;
     }
     while (gameInProgress && (p1Deck.length > 0 || p2Deck.length > 0)){
         p1Active = p1Deck[0];
@@ -118,8 +117,8 @@ function battle(){
             p2Deck = p2Deck.concat(p2Active, p1Active);
             p1Deck.splice(0,1);
             p2Deck.splice(0,1);
-            p1Spree++;
-            p2Spree = 0;
+            p2Spree++;
+            p1Spree = 0;
                 if (prize.length > 0){
                     p2Deck = p2Deck.concat(prize);
                     prize.splice(0,52);
@@ -152,7 +151,7 @@ function p1CreateHand(){
     i = 0;
     while (i < p1Deck.length){
         // $("#p1Holder").append("<div class='p1Hand'></div>")
-        $("#p1Holder").append("<div class='p1Hand'> <img src='Zredback.png'/></div>");
+        $("#p1Holder").append("<div class='p1Hand'> <img class='card' src='Zredback.png'/></div>");
         i++
 
         }
@@ -160,18 +159,16 @@ function p1CreateHand(){
 function p2CreateHand(){
     i = 0;
     while (i < p2Deck.length){
-        $("#p2Holder").append("<div class='p2Hand'> <img src='Zblueback.png'/></div>");
+        $("#p2Holder").append("<div class='p2Hand'> <img class='card' src='Zblueback.png'/></div>");
         i++;
         }
 }
 function createPrize(){
     i = 0;
-    if (i < prize.length){
-        $("#prizeHolder").append("<div class='prize'> <img src='Zredback.png'/></div>");
+    $("#prizeHolder").html('');
+    while (i < prize.length){
+        $("#prizeHolder").append(" <div class='prize'><img class='cardP' src='Zredback.png'/></div>");
         i++
-    }
-    else{
-        $("#prizeHolder").html('');
     }
 }
 
@@ -197,7 +194,7 @@ $("#p1Deck").on("click", function(){
         p2CreateHand();
         spreeCheck();
         console.log("PLAY");
-        $("#scoreHolder").html("Player2 Cards: "+p2Deck.length+"</br> Player1 Cards: "+p1Deck.length);
+        $("#scoreHolder").html("<p>"+p2Name+": "+p2Deck.length+"</br>"+p1Name+": "+p1Deck.length+"</br> War: "+prize.length+"</p>");
     }
     else{
         alert("Game Over");
@@ -214,7 +211,7 @@ $("#p2Deck").on("click", function(){
         p2CreateHand();
         spreeCheck();
         console.log("PLAY");
-        $("#scoreHolder").html("Player2 Cards: "+p2Deck.length+"</br> Player1 Cards: "+p1Deck.length);
+        $("#scoreHolder").html("<p>"+p2Name+": "+p2Deck.length+"</br>"+p1Name+": "+p1Deck.length+"</br> War: "+prize.length+"</p>");
     }
     else{
         alert("Game Over");
