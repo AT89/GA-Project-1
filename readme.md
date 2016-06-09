@@ -6,8 +6,8 @@
     This is representation of the War card game. I picked this game solely to get better with arrays since that is s
     foreign and new to me. I did get a little better with it but my HTML and CSS got a lot better (expect changes to the website soon!). User stories and wireframes are below. Most of my comments were made in the war.js. I found out that transitions were too much of a pain and I did not hae time for it; so instead I thought of a really cool and fun idea that will happen once you get into a tie or "War".
 
-##Aproaches/Milestones:
-#M1 - Logic and javascript
+#Aproaches/Milestones:
+##M1 - Logic and javascript
 
     Get the logic in order and do the basic javascript. I broke down basic functions of the game in pseudo-code and then built the code to finish the function, then connect the functions. I used console.log to test out the functions and looked into the array.
         These were my Psuedo-code comments:
@@ -24,24 +24,26 @@
                           - How to handle ties within a tie when Player 1 or 2 has less than 4 cards
               - How to end the game
 
-#M2- Basic CSS and html
+##M2 - Basic CSS and html
   - I wanted to display the cards in a nice symmetrical fashion
   - HP bar-esque hands, wanted the cards to stack
     - Flex boxes
   - Click the 'card' to draw and evaluate the card.values
   - Wanted to show the prize cards after "War"
   - Active cards of p1 and p2 in the middle
-  -
 
-#Goodies
+##M3 - Goodies
     - Wanted to add a fun mode
     - I like surprises
+      - Time the surprises on the drop of the mp3 (~3seconds)
       - Change classes on a certain event such as: the first War but not repeating it again
     - Basic animations/transitions
     - Theme music and extra hidden (then unhidden after event) pictures
+    - Add transitions
 
 
-##Technologies used:
+
+#Technologies used:
 
       - Fisher Yates shuffle https://bost.ocks.org/mike/shuffle/
         - This shuffle function allows simultaneously shuffling of the array inside the array. Making it faster to shuffle since it does not need to rearrange into another array.
@@ -55,8 +57,8 @@
       - my amazing WDI instructors: Adrian, Jesse, Robin - for being available on Slack, in person
 
 ////////////////////////// initial writeup
-##User stories for War
-#Basics:
+#User stories for War
+##Basics:
     Deck consists of normal deck, 2-A, with suites H, D, C, S.
     Ace is the highest, suits dont matter
     each player (2 player) is dealt half of the deck, 26 cards
@@ -69,13 +71,13 @@
     Winner/Loser declarations animated in the middle
     DEAD/Discard pile and LIVE pile of cards or have it shuffle everytime? (maybe)
 
-#Cool:
+##Cool:
     I want to see really cool animations
     Reset button
     Add a life bar
     Add announcements like "KILLING SPREE" for 3 kills
 
-#VERY COOL:
+##VERY COOL:
     Make the anime style cross epic explosion stuff (button that toggles it off or only on draws)
     Add functionality for 3+ players.
     Fire on the cards after KILLING SPREE is triggered
