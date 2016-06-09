@@ -250,8 +250,8 @@ function pokeMode(){
 
             //Pokemon icons pokemon class remove hidden or remove opacity
             //below doesnt work.. due to the nature of how these cards are created
-            // $("#p1PokeIcon").removeClass("hidden");
-            // $("#p2PokeIcon").removeClass("hidden");
+            $("#p1PokeIcon").removeClass("hidden");
+            $("#p2PokeIcon").removeClass("hidden");
             //pokemon class replace cardback with pokeball
             $("img.pokemon").replaceWith("<img src='pokemon/pokeball.png'/>");
             $("img.cardP").replaceWith("<img class='cardP' src='pokemon/pokeball.png'/>");
