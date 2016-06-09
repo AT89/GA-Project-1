@@ -207,6 +207,8 @@ function spreeCheck(){ //win combos announcements
 }
 
 function pokeMode(){
+    var audio = new Audio('pokemon/battle.mp3');
+    audio.play();
         //use a fade (marquee whole page scroll?) for 3 seconds
 
         //do replacing functions
