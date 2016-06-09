@@ -14,8 +14,8 @@ var pokeIcons = [];
 var pokemonMode = true;
 var PokeActive1;
 var PokeActive2;
-p2Name = 'Player 2';
-p1Name = 'Player 1';
+p2Name = "Player 2";
+p1Name = "Player 1";
 r = 0;
 b = 0;
 
@@ -114,7 +114,7 @@ function draw(){
 }
 
 function battle(){
-        // will evaluate whoevers drawn card is higher and take both cards and put it in the winner's deadpile
+        // will evaluate whoevers drawn card is higher and take both cards and put it in the winner"s deadpile
         if (p1Active.value === p2Active.value){
             tieBreaker();
             if (pokemonMode === true){
@@ -179,7 +179,7 @@ function p1CreateHand(){ //create the hand on the bottom rows (for each respecti
         }
         else{
             $("#p1Holder").append("<div class='p1Hand'> <img class='card' src='Zredback.png'/></div>");
-            i++
+            i++;
         }
     }
 }
@@ -192,21 +192,21 @@ function p2CreateHand(){
         }
         else{
             $("#p2Holder").append("<div class='p2Hand'> <img class='card' src='Zblueback.png'/></div>");
-            i++
+            i++;
         }
     }
 }
 
 function createPrize(){
     i = 0;
-    $("#prizeHolder").html('');
+    $("#prizeHolder").html("");
     while (i < prize.length){
         if (pokemonMode === false){
-            $("#prizeHolder").append(" <div class='prize'><img class='cardP' src='pokemon/pokeball.png'/></div>");
+            $("#prizeHolder").append("<div class='prize'><img class='cardP' src='pokemon/pokeball.png'/></div>");
             i++
         }
         else{
-            $("#prizeHolder").append(" <div class='prize'><img class='cardP' src='Zredback.png'/></div>");
+            $("#prizeHolder").append("<div class='prize'><img class='cardP' src='Zredback.png'/></div>");
             i++
         }
     }
@@ -227,34 +227,41 @@ function pokeMode(){
     pokemonMode = false;
     //PLAY POKEMON BATTLE THEME
     //play pokemonbattletheme mp3
-    var audio = new Audio('pokemon/battle.mp3');
+    var audio = new Audio("pokemon/battle.mp3");
     audio.play();
         //use a fade (marquee whole page scroll?) for 3 seconds
         setTimeout(function(){
-            //do replacing functions
+            $("body").addClass("color");
+        }, 100);
+        setTimeout(function(){
+            $("body").removeClass("color");
+        }, 2000);
+        setTimeout(function(){
+            $("body").addClass("image");
+        }, 3000);
+
+        setTimeout(function(){
+        //do replacing functions
             //replace h1 with logo
             $("div.header1").replaceWith("<div class='header1'><img src='pokemon/logo.gif'/></div>");
 
             //Pokemon icons pokemon class remove hidden or remove opacity
+            $("#p1PokeIcon").removeClass("hidden");
+            $("#p2PokeIcon").removeClass("hidden");
             //pokemon class replace cardback with pokeball
             $("img.pokemon").replaceWith("<img src='pokemon/pokeball.png'/>");
-
-            // });
-            // //replace background
-
         }, 3000);
 }
 
 $("#p1Deck").on("click", function(){
     if (gameInProgress === true){
-        $('#p1Holder').html(''); //clears the hand viewer
-        $('#p2Holder').html('');
+        $("#p1Holder").html(""); //clears the hand viewer so it can rebuild
+        $("#p2Holder").html("");
         draw();
         battle();
         p1CreateHand();
         p2CreateHand();
         spreeCheck();
-        console.log("PLAY");
         $("#scoreHolder").html("<p>"+p2Name+": "+p2Deck.length+"</br>"+p1Name+": "+p1Deck.length+"</br> War: "+prize.length+"</p>");
     }
     else{
@@ -263,14 +270,13 @@ $("#p1Deck").on("click", function(){
 });
 $("#p2Deck").on("click", function(){
     if (gameInProgress===true){
-        $('#p1Holder').html(''); //clears the hand viewer
-        $('#p2Holder').html('');
+        $("#p1Holder").html(""); //clears the hand viewer so it can rebuild
+        $("#p2Holder").html("");
         draw();
         battle();
         p1CreateHand();
         p2CreateHand();
         spreeCheck();
-        console.log("PLAY");
         $("#scoreHolder").html("<p>"+p2Name+": "+p2Deck.length+"</br>"+p1Name+": "+p1Deck.length+"</br> War: "+prize.length+"</p>");
     }
     else{

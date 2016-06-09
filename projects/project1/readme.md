@@ -5,7 +5,8 @@ Notes
 Technologies used:
     Fisher Yates shuffle https://bost.ocks.org/mike/shuffle/
     -This shuffle function allows simultaneously shuffling of the array inside the array. Making it faster to shuffle since it does not need to rearrange into another array.
-
+    -JQuery <3
+    -ALOT of stackoverflow
 
 User stories for War
     Basics:

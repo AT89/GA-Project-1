@@ -1,9 +1,18 @@
 body
 {
     text-align: center;
-    background-color: green;
     color: white;
     position: relative;
+    background-color: green;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+}
+body.color{
+    background-color: black;
+}
+body.image{
+    background-image: url('pokemon/bg.jpg');
 }
 .header1{
     height: 200px;
