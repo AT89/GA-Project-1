@@ -239,19 +239,19 @@ function pokeMode(){
     var audio = new Audio("pokemon/battle.mp3");
     audio.play();
         //use a fade (marquee whole page scroll?) for 3 seconds
-    setTimeout(function(){
+    setInterval(function(){
         $("body").addClass("color");
     }, 500);
-    setTimeout(function(){
+    setInterval(function(){
         $("body").removeClass("color");
     }, 1000);
-    setTimeout(function(){
+    setInterval(function(){
         $("body").addClass("image");
     }, 1500);
-    setTimeout(function(){
+    setInterval(function(){
         $("body").addClass("color");
     }, 2000);
-    setTimeout(function(){
+    setInterval(function(){
         $("body").removeClass("color");
     }, 3000);
 
