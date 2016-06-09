@@ -8,30 +8,45 @@ var prize = [];
 var deck = [];
 var p1Spree = 0;
 var p2Spree = 0;
-var p1Name = prompt("Player 1 Name?");
-var p2Name = prompt("Player 1 Name?");
-// p2Name = 'Player 2';
-// p1Name = 'Player 1';
+var pokeIcons = [];
+// var p1Name = prompt("Player 1 Name?");
+// var p2Name = prompt("Player 1 Name?");
+var pokemonMode = true;
+var PokeActive1;
+var PokeActive2;
+p2Name = 'Player 2';
+p1Name = 'Player 1';
+r = 0;
+b = 0;
 
 assignValue(); //first assign values and images
+pokeImage();
 shuffle(deck); //shuffle the deck (create button later)
 initialDeal(); //deals 26 to each player
 // stackedDeal(deck); //intiate stackedDeal (alt deal), turn off initial deal and shuffle for this to work
 
 
 function assignValue(){ // assign value and images to cards (while still ordered)
-            var value = 0;
-            for (i = 1; i < 53; i++){
-            var card = {} //build an object to store value
-            card.value = value; //how to create object property for value
+    var value = 0;
+    for (i = 1; i < 53; i++){
+        var card = {} //build an object to store value
+        card.value = value; //how to create object property for value
             if (i%4 === 0){
                 value++;
             }
-            card.img = "cards/" +i+ ".png";
-            deck.push(card); //push the card objects (value and image )to the deck
-            console.log(card);
-        }
+        card.img = "cards/" +i+ ".png";
+        deck.push(card); //push the card objects (value and image )to the deck
+    }
 }
+function pokeImage(){
+    //makes an array with object of images corresponding to the filenames
+    for (i = 1; i < 555; i++){
+        var poke = {}
+        poke.img = "pokemon/icons/p ("+i+").ico";
+        pokeIcons.push(poke);
+    }
+    return pokeIcons;
+};
 
 function shuffle(array) { //credits to Fisher Yates shuffle https://bost.ocks.org/mike/shuffle/
   var m = array.length, t, i;
@@ -82,9 +97,18 @@ function draw(){
     while (gameInProgress && (p1Deck.length > 0 || p2Deck.length > 0)){
         p1Active = p1Deck[0];
         p2Active = p2Deck[0];
+            t = Math.random(1);
+            t2 = Math.random(1);
+            y = Math.floor(t * 552);
+            y2 = Math.floor(t2 * 552);
+            PokeActive1 = pokeIcons[y];
+            PokeActive2 = pokeIcons[y2];
+
         console.log("p1 card is "+ p1Active.value +" and p2 card is "+ p2Active.value +".");
         $("#p1CardImg").attr("src", p1Active.img); //show p1Active card
         $("#p2CardImg").attr("src", p2Active.img);
+        $("#p2PokeIcon").attr("src", PokeActive2.img )
+        $("#p1PokeIcon").attr("src", PokeActive1.img )
         return [p1Active, p2Active];
     }
 }
@@ -93,6 +117,10 @@ function battle(){
         // will evaluate whoevers drawn card is higher and take both cards and put it in the winner's deadpile
         if (p1Active.value === p2Active.value){
             tieBreaker();
+            if (pokemonMode = true){
+                pokeMode(); //GOTTA CATCH EM ALL
+            }
+            return pokemonMode = false;
         }
         if (p1Active.value > p2Active.value){ //p1 wins
             console.log("p1 wins round");
@@ -129,9 +157,6 @@ function battle(){
         }
 
     }
-
-
-
 function tieBreaker(){
     console.log("WAR!!!!!!!!")
     var p1Prize = [];
@@ -146,14 +171,12 @@ function tieBreaker(){
     createPrize();
     return prize;
 }
-
 function p1CreateHand(){
     i = 0;
     while (i < p1Deck.length){
         // $("#p1Holder").append("<div class='p1Hand'></div>")
         $("#p1Holder").append("<div class='p1Hand'> <img class='card' src='Zredback.png'/></div>");
         i++
-
         }
 }
 function p2CreateHand(){
@@ -183,6 +206,18 @@ function spreeCheck(){ //win combos announcements
     }
 }
 
+function pokeMode(){
+        //use a fade (marquee whole page scroll?) for 3 seconds
+
+        //do replacing functions
+            //replace h1 with logo
+
+            //play pokemonbattletheme mp3
+
+            //Pokemon icons pokemon class remove hidden or remove opacity
+            //pokemon class replace cardback with pokeball
+            //replace background
+}
 
 $("#p1Deck").on("click", function(){
     if (gameInProgress=true){
@@ -200,7 +235,6 @@ $("#p1Deck").on("click", function(){
         alert("Game Over");
     }
 });
-
 $("#p2Deck").on("click", function(){
     if (gameInProgress=true){
         $('#p1Holder').html(''); //clears the hand viewer
