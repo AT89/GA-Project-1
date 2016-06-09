@@ -11,20 +11,17 @@ var p2Spree = 0;
 var pokeIcons = [];
 var p1Name = prompt("Player 1 (red, bottom) Name?");
 var p2Name = prompt("Player 2 (blue, top) Name?");
+// p2Name = "Player 2";
+// p1Name = "Player 1";
 var pokemonMode = true;
 var PokeActive1;
 var PokeActive2;
 var pokeFirst = true;
-
-// $("winAnnounceP1").html(p1Name+" Wins!"); //add name to the win announce div
-// $("#winAnnounceP2").html(p2Name+" Wins!");
-// p2Name = "Player 2";
-// p1Name = "Player 1";
 r = 0;
 b = 0;
 
 assignValue(); //first assign values and images
-pokeImage();
+pokeImage(); //generate the image of the pokemon
 shuffle(deck); //shuffle the deck (create button later)
 initialDeal(); //deals 26 to each player
 // stackedDeal(deck); //intiate stackedDeal (alt deal), turn off initial deal and shuffle for this to work
@@ -71,7 +68,7 @@ function stackedDeal(array){ //function to test out 2 even decks (to test out ti
     counter = 0;
     while (counter < m){
         if (counter%2 === 0){
-            p1Deck.push(array[counter]); //says p1Deck.append is not a function
+            p1Deck.push(array[counter]);
             counter++;
         }
         else {
@@ -101,10 +98,13 @@ function draw(){
     while (gameInProgress && (p1Deck.length > 0 || p2Deck.length > 0)){
         p1Active = p1Deck[0];
         p2Active = p2Deck[0];
-            t = Math.random(1);
-            t2 = Math.random(1);
-            y = Math.floor(t * 554);
-            y2 = Math.floor(t2 * 554);
+
+                t = Math.random(1);
+                y = Math.floor(t * 554);
+
+                t2 = Math.random(1);
+                y2 = Math.floor(t2 * 554);
+
             PokeActive1 = pokeIcons[y];
             PokeActive2 = pokeIcons[y2];
 
@@ -142,7 +142,6 @@ function battle(){
                     p2Spree = 0;
                 }
         }
-
         else if (p1Active.value < p2Active.value){ //p2 wins
             console.log("p2 wins round");
             showWinner(p2Name); //splash win p2
@@ -171,14 +170,14 @@ function tieBreaker(){
     p1Deck.splice(0,1);
     p2Deck.splice(0,1);
     p1Prize = p1Deck.splice(0,3);
-    p2Prize = p1Deck.splice(0,3);
+    p2Prize = p2Deck.splice(0,3);
     prize = prize.concat(p1Prize, p2Prize);
     shuffle(prize); //shuffle prize pile (turned this off to check if correct arrays stored/given)
     createPrize();
     return prize;
 }
 
-function p1CreateHand(){ //create the hand on the bottom rows (for each respective), use a different image on pokemonMode
+function p1CreateHand(){ //create the hand on the bottom rows (for each respective), use a different image on pokemonMode.. could have been a DRY
     i = 0;
     while (i < p1Deck.length){
         if (pokemonMode === false){
@@ -193,7 +192,7 @@ function p1CreateHand(){ //create the hand on the bottom rows (for each respecti
 }
 function p2CreateHand(){
     i = 0;
-    while (i < p1Deck.length){
+    while (i < p2Deck.length){
         if (pokemonMode === false){
             $("#p2Holder").append("<div class='p2Hand'> <img class='card' src='pokemon/pokeball.png'/></div>");
             i++;
@@ -220,7 +219,7 @@ function createPrize(){
     }
 }
 
-function spreeCheck(){ //win combos announcements
+function spreeCheck(){ //win combos announcements...To do later when I learn cooler transition effects (plan to take animations from pokemon moves and randomize which ones come out)
     if (p1Spree > 3){
         // P1 IS ON A SPREE
         console.log("P1 IS ON A SPREE");
@@ -232,7 +231,7 @@ function spreeCheck(){ //win combos announcements
 }
 
 function pokeMode(){
-    $("#p1Holder").html(""); //clears the hand viewer so it can rebuild
+    $("#p1Holder").html(""); //clears the hand viewer so it can rebuild based off current length
     $("#p2Holder").html("");
     console.log("hand cleared");
     //PLAY POKEMON BATTLE THEME
@@ -256,12 +255,11 @@ function pokeMode(){
         $("body").removeClass("color");
     }, 3000);
 
-
+//no img alts with replacement, they cant see it anyway..
     setTimeout(function(){
     //do replacing functions
         //replace h1 with logo
         $("div.header1").replaceWith("<div class='header1'><img src='pokemon/logo.gif'/></div>");
-
         //Pokemon icons pokemon class remove hidden or remove opacity
         //below doesnt work.. due to the nature of how these cards are created
         $("#p1PokeIcon").removeClass("hidden");
@@ -274,7 +272,6 @@ function pokeMode(){
         $("body").addClass("image");
     }, 100);
     pokemonMode = false;
-
 }
 function showWinner(nameOfWinner){
     $("#winAnnounce").html(nameOfWinner + " wins!").addClass("showAnnounce");
@@ -283,29 +280,14 @@ function showWinner(nameOfWinner){
     }, 2000);
 }
 function WarAnnounce(){
-    $("#winAnnounce").html("War!!!").addClass("showAnnounce");
+    $("#winAnnounce").html("Gotta Catch 'em all!").addClass("showAnnounce");
     setTimeout(function(){
         $("#winAnnounce").removeClass("showAnnounce");
     }, 4000);
 }
 
-$("#p1Deck").on("click", function(){
+$("#p1Deck, #p2Deck").on("click", function(){ //just thought about using 2 selectors using a comma..
     if (gameInProgress === true){
-        $("#p1Holder").html(""); //clears the hand viewer so it can rebuild
-        $("#p2Holder").html("");
-        draw();
-        battle();
-        p1CreateHand();
-        p2CreateHand();
-        spreeCheck();
-        $("#scoreHolder").html(p2Name+": "+p2Deck.length+"</br>"+p1Name+": "+p1Deck.length+"</br> War: "+prize.length);
-    }
-    else{
-        alert("Game Over, Refresh (alt+r) to play again!");
-    }
-});
-$("#p2Deck").on("click", function(){
-    if (gameInProgress===true){
         $("#p1Holder").html(""); //clears the hand viewer so it can rebuild
         $("#p2Holder").html("");
         draw();
