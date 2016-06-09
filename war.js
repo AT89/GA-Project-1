@@ -280,7 +280,7 @@ function showWinner(nameOfWinner){
     }, 2000);
 }
 function WarAnnounce(){
-    $("#winAnnounce").html("Gotta Catch 'em all!").addClass("showAnnounce");
+    $("#winAnnounce").html("Gotta Catch em all!").addClass("showAnnounce");
     setTimeout(function(){
         $("#winAnnounce").removeClass("showAnnounce");
     }, 4000);
