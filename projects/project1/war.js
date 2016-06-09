@@ -9,13 +9,14 @@ var deck = [];
 var p1Spree = 0;
 var p2Spree = 0;
 var pokeIcons = [];
-// var p1Name = prompt("Player 1 Name?");
-// var p2Name = prompt("Player 1 Name?");
+var p1Name = prompt("Player 1 (red, bottom) Name?");
+var p2Name = prompt("Player 2 (blue, top) Name?");
 var pokemonMode = true;
 var PokeActive1;
 var PokeActive2;
-p2Name = "Player 2";
-p1Name = "Player 1";
+var pokeFirst = true;
+// p2Name = "Player 2";
+// p1Name = "Player 1";
 r = 0;
 b = 0;
 
@@ -87,11 +88,11 @@ function initialDeal(){
 function draw(){
     // when player1 clicks on his deck, the top card from both decks will draw
     if (p1Deck.length === 0){ //if p1 has no cards, p2 wins
-        alert("p2 Wins the game")
+        alert(p2Name+" Wins the game")
         return gameInProgress = false;
     }
     if (p2Deck.length === 0){ //if p2 has no cards p2 lose
-        alert("p1 Wins the game")
+        alert(p1Name+" Wins the game")
         return gameInProgress = false;
     }
     while (gameInProgress && (p1Deck.length > 0 || p2Deck.length > 0)){
@@ -104,7 +105,7 @@ function draw(){
             PokeActive1 = pokeIcons[y];
             PokeActive2 = pokeIcons[y2];
 
-        console.log("p1 card is "+ p1Active.value +" and p2 card is "+ p2Active.value +".");
+        console.log("p1 card.value is "+ p1Active.value +" and p2 card.value is "+ p2Active.value +".");
         $("#p1CardImg").attr("src", p1Active.img); //show p1Active card
         $("#p2CardImg").attr("src", p2Active.img);
         $("#p2PokeIcon").attr("src", PokeActive2.img )
@@ -224,7 +225,9 @@ function spreeCheck(){ //win combos announcements
 }
 
 function pokeMode(){
-    pokemonMode = false;
+    $("#p1Holder").html(""); //clears the hand viewer so it can rebuild
+    $("#p2Holder").html("");
+    console.log("hand cleared");
     //PLAY POKEMON BATTLE THEME
     //play pokemonbattletheme mp3
     var audio = new Audio("pokemon/battle.mp3");
@@ -232,7 +235,7 @@ function pokeMode(){
         //use a fade (marquee whole page scroll?) for 3 seconds
         setTimeout(function(){
             $("body").addClass("color");
-        }, 100);
+        }, 1000);
         setTimeout(function(){
             $("body").removeClass("color");
         }, 2000);
@@ -246,12 +249,15 @@ function pokeMode(){
             $("div.header1").replaceWith("<div class='header1'><img src='pokemon/logo.gif'/></div>");
 
             //Pokemon icons pokemon class remove hidden or remove opacity
-            $("#p1PokeIcon").removeClass("hidden");
-            $("#p2PokeIcon").removeClass("hidden");
+            //below doesnt work.. due to the nature of how these cards are created
+            // $("#p1PokeIcon").removeClass("hidden");
+            // $("#p2PokeIcon").removeClass("hidden");
             //pokemon class replace cardback with pokeball
             $("img.pokemon").replaceWith("<img src='pokemon/pokeball.png'/>");
+            $("img.cardP").replaceWith("<img class='cardP' src='pokemon/pokeball.png'/>");
         }, 3000);
-}
+        pokemonMode = false;
+    }
 
 $("#p1Deck").on("click", function(){
     if (gameInProgress === true){
@@ -265,7 +271,7 @@ $("#p1Deck").on("click", function(){
         $("#scoreHolder").html("<p>"+p2Name+": "+p2Deck.length+"</br>"+p1Name+": "+p1Deck.length+"</br> War: "+prize.length+"</p>");
     }
     else{
-        alert("Game Over");
+        alert("Game Over, Refresh (alt+r) to play again!");
     }
 });
 $("#p2Deck").on("click", function(){
@@ -280,6 +286,6 @@ $("#p2Deck").on("click", function(){
         $("#scoreHolder").html("<p>"+p2Name+": "+p2Deck.length+"</br>"+p1Name+": "+p1Deck.length+"</br> War: "+prize.length+"</p>");
     }
     else{
-        alert("Game Over");
+        alert("Game Over, Refresh (alt+r) to play again!");
     }
 });

@@ -1,11 +1,19 @@
+Play this game until you get a 'tie'
+start by clicking on the "active card" for blue (the card near top) or red (the card near bottom)
+
 Notes
+
     This is representation of the War card game. I picked this game solely to get better with arrays since that is s
     foreign and new to me. I did get a little better with it but my HTML and CSS got a lot better (expect changes to the website soon!). User stories and wireframes are below. Most of my comments were made in the war.js. I found out that transitions were too much of a pain and I did not hae time for it; so instead I thought of a really cool and fun idea that will happen once you get into a tie or "War".
 
+
 Technologies used:
     Fisher Yates shuffle https://bost.ocks.org/mike/shuffle/
+
     -This shuffle function allows simultaneously shuffling of the array inside the array. Making it faster to shuffle since it does not need to rearrange into another array.
+
     -JQuery <3
+
     -ALOT of stackoverflow
 
 User stories for War
