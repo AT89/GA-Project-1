@@ -5,6 +5,14 @@ body
     color: white;
     position: relative;
 }
+.header1{
+    height: 200px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+
+}
 h1{
     font-size: 50px;
 }
@@ -46,7 +54,7 @@ h1{
     align-items: center;
     margin:0 auto;
     width: 700px;
-    height: 700px;
+    height: 600px;
 }
 #p1Deck{
     position: absolute;
@@ -128,6 +136,7 @@ h1{
     top: 50px;
     position: relative;
     text-align: center;
+    z-index: 2;
 
 }
 #p2PokeHolder{
@@ -137,5 +146,6 @@ h1{
     bottom: 50px;
     position: relative;
     text-align: center;
+    z-index: 2;
 
 }

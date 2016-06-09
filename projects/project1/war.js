@@ -117,10 +117,9 @@ function battle(){
         // will evaluate whoevers drawn card is higher and take both cards and put it in the winner's deadpile
         if (p1Active.value === p2Active.value){
             tieBreaker();
-            if (pokemonMode = true){
+            if (pokemonMode === true){
                 pokeMode(); //GOTTA CATCH EM ALL
             }
-            return pokemonMode = false;
         }
         if (p1Active.value > p2Active.value){ //p1 wins
             console.log("p1 wins round");
@@ -171,27 +170,45 @@ function tieBreaker(){
     createPrize();
     return prize;
 }
-function p1CreateHand(){
+function p1CreateHand(){ //create the hand on the bottom rows (for each respective), use a different image on pokemonMode
     i = 0;
     while (i < p1Deck.length){
-        // $("#p1Holder").append("<div class='p1Hand'></div>")
-        $("#p1Holder").append("<div class='p1Hand'> <img class='card' src='Zredback.png'/></div>");
-        i++
+        if (pokemonMode === false){
+            $("#p1Holder").append("<div class='p1Hand'> <img class='card' src='pokemon/pokeball.png'/></div>");
+            i++;
         }
+        else{
+            $("#p1Holder").append("<div class='p1Hand'> <img class='card' src='Zredback.png'/></div>");
+            i++
+        }
+    }
 }
 function p2CreateHand(){
     i = 0;
-    while (i < p2Deck.length){
-        $("#p2Holder").append("<div class='p2Hand'> <img class='card' src='Zblueback.png'/></div>");
-        i++;
+    while (i < p1Deck.length){
+        if (pokemonMode === false){
+            $("#p2Holder").append("<div class='p2Hand'> <img class='card' src='pokemon/pokeball.png'/></div>");
+            i++;
         }
+        else{
+            $("#p2Holder").append("<div class='p2Hand'> <img class='card' src='Zblueback.png'/></div>");
+            i++
+        }
+    }
 }
+
 function createPrize(){
     i = 0;
     $("#prizeHolder").html('');
     while (i < prize.length){
-        $("#prizeHolder").append(" <div class='prize'><img class='cardP' src='Zredback.png'/></div>");
-        i++
+        if (pokemonMode === false){
+            $("#prizeHolder").append(" <div class='prize'><img class='cardP' src='pokemon/pokeball.png'/></div>");
+            i++
+        }
+        else{
+            $("#prizeHolder").append(" <div class='prize'><img class='cardP' src='Zredback.png'/></div>");
+            i++
+        }
     }
 }
 
@@ -207,22 +224,29 @@ function spreeCheck(){ //win combos announcements
 }
 
 function pokeMode(){
+    pokemonMode = false;
+    //PLAY POKEMON BATTLE THEME
+    //play pokemonbattletheme mp3
     var audio = new Audio('pokemon/battle.mp3');
     audio.play();
         //use a fade (marquee whole page scroll?) for 3 seconds
-
-        //do replacing functions
+        setTimeout(function(){
+            //do replacing functions
             //replace h1 with logo
-
-            //play pokemonbattletheme mp3
+            $("div.header1").replaceWith("<div class='header1'><img src='pokemon/logo.gif'/></div>");
 
             //Pokemon icons pokemon class remove hidden or remove opacity
             //pokemon class replace cardback with pokeball
-            //replace background
+            $("img.pokemon").replaceWith("<img src='pokemon/pokeball.png'/>");
+
+            // });
+            // //replace background
+
+        }, 3000);
 }
 
 $("#p1Deck").on("click", function(){
-    if (gameInProgress=true){
+    if (gameInProgress === true){
         $('#p1Holder').html(''); //clears the hand viewer
         $('#p2Holder').html('');
         draw();
@@ -238,7 +262,7 @@ $("#p1Deck").on("click", function(){
     }
 });
 $("#p2Deck").on("click", function(){
-    if (gameInProgress=true){
+    if (gameInProgress===true){
         $('#p1Holder').html(''); //clears the hand viewer
         $('#p2Holder').html('');
         draw();
