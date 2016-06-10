@@ -42,32 +42,35 @@
      - Add transitions
 
 #SO MUCH I WANT TO DO.
-##Up to now, my proudest moment was being able to realize that I can do anything as long as I put my mind to it. My War game went pretty well. I want to continue to develop and add more features. These are my thoughts.
+Up to now, my proudest moment was being able to realize that I can do anything as long as I put my mind to it. My War game went pretty well. I want to continue to develop and add more features. These are my thoughts.
 
-#Future Plans..
-##Make it one player.
-	-Add Bosses as Opponents
-	-They can have Types/Gyms
-	-Shops
+##Future Plans..
+-Make it one player.
+     - Add Bosses as Opponents
+     - They can have Types/Gyms
+	- Shops
 
 ##specifically to Poke mode
-	-all changes on the page to hit all at once, preferably 3500ms. 		-Seems to be Good. I can probably add to it by making sure:
-		-Turn off mouse click after WAR event, so players can’t draw 			again
-	-object elements to be Types. Type weaknesses evaluate winner
+	- all changes on the page to hit all at once, preferably 3500ms. 			            - Turn off mouse click after WAR event, so players can’t draw 			again..or simpler turn off click functionality (listener) for 4seconds
+	- object elements to be Types. Type weaknesses evaluate winner
+     - Autoplay Button, with speed increment slider
+     - Infinite lives
+     	  - counts wins rather than cards
+     	  - just shuffle the win pile array, add more cards, build another array
 
 ##stretch goals
-	-Make my own fonts
-	-Make my own BG
-	-Work PHP into it, login, cookies
-	-Evolving or other games (Overwatch sketches?) or whatever
+	- Make my own fontAutoplay Button, with speed increment slider
+     Infinite
+     	-counts wins rather than cards
+     	-just shuffle the win pile array, add more cards, build another arrays
+	- Make my own BG
+	- Work PHP into it, login, cookies
+	- Evolving or other games (Overwatch sketches?) or whatever
 	incorporated
-	-Work on mobile
-	-Holiday theme (July 4th, eagles with sunglasses?) // levels?
-	-Make it set to only Pokemon that are evolving as wins	progresses.
-##Autoplay Button, with speed increment slider
-##Infinite
-	-counts wins rather than cards
-	-just shuffle the win pile array, add more cards, build another array
+	- Work on mobile
+	- Holiday theme (July 4th, eagles with sunglasses?) // levels?
+	- Make it set to only Pokemon that are evolving as wins	progresses.
+
 
 Can learning how to make the site save to cookies (from what you guys recommended) or have a login (ruby on rails, php) ?
 
