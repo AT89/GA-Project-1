@@ -9,10 +9,10 @@ var deck = [];
 var p1Spree = 0;
 var p2Spree = 0;
 var pokeIcons = [];
-var p1Name = prompt("Player 1 (red, bottom) Name?");
-var p2Name = prompt("Player 2 (blue, top) Name?");
-// p2Name = "Player 2";
-// p1Name = "Player 1";
+// var p1Name = prompt("Player 1 (red, bottom) Name?");
+// var p2Name = prompt("Player 2 (blue, top) Name?"); //will revisit this when i can save to cookies, then make a reset button
+p2Name = "Blue";
+p1Name = "Red";
 var pokemonMode = true;
 var PokeActive1;
 var PokeActive2;
@@ -239,21 +239,19 @@ function pokeMode(){
     var audio = new Audio("pokemon/battle.mp3");
     audio.play();
         //use a fade (marquee whole page scroll?) for 3 seconds
-    setInterval(function(){
+    setTimeout(function(){
         $("body").addClass("color");
     }, 500);
-    setInterval(function(){
+     setTimeout(function(){
         $("body").removeClass("color");
     }, 1000);
-    setInterval(function(){
-        $("body").addClass("image");
-    }, 1500);
-    setInterval(function(){
+    setTimeout(function(){
         $("body").addClass("color");
     }, 2000);
-    setInterval(function(){
+    setTimeout(function(){
         $("body").removeClass("color");
     }, 3000);
+
 
 //no img alts with replacement, they cant see it anyway..
     setTimeout(function(){
@@ -270,7 +268,7 @@ function pokeMode(){
     }, 3500);
     setTimeout(function(){
         $("body").addClass("image");
-    }, 100);
+   }, 3500);
     pokemonMode = false;
 }
 function showWinner(nameOfWinner){
@@ -295,7 +293,7 @@ $("#p1Deck, #p2Deck").on("click", function(){ //just thought about using 2 selec
         p1CreateHand();
         p2CreateHand();
         spreeCheck();
-        $("#scoreHolder").html(p2Name+": "+p2Deck.length+"</br>"+p1Name+": "+p1Deck.length+"</br> War: "+prize.length);
+        $("#scoreHolder").html(p2Name+": "+p2Deck.length+"</br>"+p1Name+": "+p1Deck.length+"</br> Prizes: "+prize.length);
     }
     else{
         alert("Game Over, Refresh (alt+r) to play again!");

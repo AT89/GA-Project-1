@@ -1,15 +1,15 @@
 ##Notes
+     Play at Full screen
+     Play this game until you get a 'tie'
+     start by clicking on the "active card" for blue (the card near top) or red (the card near bottom)
 
-    Play this game until you get a 'tie'
-    start by clicking on the "active card" for blue (the card near top) or red (the card near bottom)
-
-    This is representation of the War card game. I picked this game solely to get better with arrays since that is s
-    foreign and new to me. I did get a little better with it but my HTML and CSS got a lot better (expect changes to the website soon!). User stories and wireframes are below. Most of my comments were made in the war.js. I found out that transitions were too much of a pain and I did not hae time for it; so instead I thought of a really cool and fun idea that will happen once you get into a tie or "War".
+     This is representation of the War card game. I picked this game solely to get better with arrays since that is s
+     foreign and new to me. I did get a little better with it but my HTML and CSS got a lot better (expect changes to the website soon!). User stories and wireframes are below. Most of my comments were made in the war.js. I found out that transitions were too much of a pain and I did not hae time for it; so instead I thought of a really cool and fun idea that will happen once you get into a tie or "War".
 
 #Aproaches/Milestones:
 ##M1 - Logic and javascript
 
-    Get the logic in order and do the basic javascript. I broke down basic functions of the game in pseudo-code and then built the code to finish the function, then connect the functions. I used console.log to test out the functions and looked into the array.
+     Get the logic in order and do the basic javascript. I broke down basic functions of the game in pseudo-code and then built the code to finish the function, then connect the functions. I used console.log to test out the functions and looked into the array.
         These were my Psuedo-code comments:
               - How to make the deck of cards
               - How to randomize the arrays
@@ -25,23 +25,55 @@
               - How to end the game
 
 ##M2 - Basic CSS and html
-  - I wanted to display the cards in a nice symmetrical fashion
-  - HP bar-esque hands, wanted the cards to stack
-    - Flex boxes
-  - Click the 'card' to draw and evaluate the card.values
-  - Wanted to show the prize cards after "War"
-  - Active cards of p1 and p2 in the middle
+     - I wanted to display the cards in a nice symmetrical fashion
+     - HP bar-esque hands, wanted the cards to stack
+     - Flex boxes
+     - Click the 'card' to draw and evaluate the card.values
+     - Wanted to show the prize cards after "War"
+     - Active cards of p1 and p2 in the middle
 
 ##M3 - Goodies
-    - Wanted to add a fun mode
-    - I like surprises
+     - Wanted to add a fun mode
+     - I like surprises
       - Time the surprises on the drop of the mp3 (~3seconds)
       - Change classes on a certain event such as: the first War but not repeating it again
-    - Basic animations/transitions
-    - Theme music and extra hidden (then unhidden after event) pictures
-    - Add transitions
+     - Basic animations/transitions
+     - Theme music and extra hidden (then unhidden after event) pictures
+     - Add transitions
 
+#SO MUCH I WANT TO DO.
+##Up to now, my proudest moment was being able to realize that I can do anything as long as I put my mind to it. My War game went pretty well. I want to continue to develop and add more features. These are my thoughts.
 
+#Future Plans..
+##Make it one player.
+	-Add Bosses as Opponents
+	-They can have Types/Gyms
+	-Shops
+
+##specifically to Poke mode
+	-all changes on the page to hit all at once, preferably 3500ms. 		-Seems to be Good. I can probably add to it by making sure:
+		-Turn off mouse click after WAR event, so players can’t draw 			again
+	-object elements to be Types. Type weaknesses evaluate winner
+
+##stretch goals
+	-Make my own fonts
+	-Make my own BG
+	-Work PHP into it, login, cookies
+	-Evolving or other games (Overwatch sketches?) or whatever
+	incorporated
+	-Work on mobile
+	-Holiday theme (July 4th, eagles with sunglasses?) // levels?
+	-Make it set to only Pokemon that are evolving as wins	progresses.
+##Autoplay Button, with speed increment slider
+##Infinite
+	-counts wins rather than cards
+	-just shuffle the win pile array, add more cards, build another array
+
+Can learning how to make the site save to cookies (from what you guys recommended) or have a login (ruby on rails, php) ?
+
+##Web Developer Goals..
+		-SASS
+		-Mobile
 
 #Technologies used:
 
@@ -94,32 +126,3 @@ App uses full window
 Deck in the middle
 fast animation or make it look like the cards are being dealt.
 Can have the picture of the card on the lower right (can have cool pics), opponent on top left
-
-
- …………………………………………………. __ . __……………………
- ……………………………………………….../’`: : `\,---`.„…………………
- ………………………………………………../|,-‘`¯¯`\(o)_\,----,,,_………..
- ………………„~*¯¯`”\,………... _„_………( `\(o),,_/` ¯ : o : : :o `-, …...
- ……………../ : · :(“,.~;*’¯¯¯”\, (_,-- ``”~,….\ : : : : : : : : : : : : : : : `\…..
-     ………….....| : · :,/`,-*~;~··-„,/ (‘` ``)/· ,…\.,/` : : :_„„,: : : : : : : : : : : \…
- …………….| : · / ,/`,--\ \’`c\,---„1 ‹’`--(_ ,/ / : : :,/` · · ): : : : : : : : : : : |…
- ……………..) : µ’` .\ (c) `¯ . . ·`), . ,-~`.. \ : : :| · · '”\, : : : : : : : : : : :/…
- ……………/` ,/_~-, .`;;`„-„,__,./, ```/……. `\: :\ · · · · `*-.,_ : : : : : :,-‘ ….
- ……………`-/¨;--;~’ `”*-=,=-_`” ,) ,/`……….`› : `\, · · · · · · ¯”~---,--`…….
- …„„………__\, · ‘, · . . . `\„_,/ ,/;-;_ ……. /` ` | ./ · · · · · · · · „-“…………
- .( :·`\,-~*`¯ · · ·`¯` `~--~*~---~;/`,-~*```*--, `1` / : | · · · ,---~*”`……………
-     . \·:··:”*~-,,„„____„„,.-~”`¯¯¯¯/ / · · · · · ‘\,) , / : :| · · · ·\………………….
- …`”’~-,„„„„„„,,~‘`` . ( · · · ,.__| | · · · ·, `\„„/ ,/`: : / · · · · ·| ………………..
-     …………………….\`”””` · · ·`’~;-,„,,_)”`_-‘ : : / · · · · · · | ………………..
- ……… (`*”-,„,-”¯¯”`-;„· · · · · · , /'``,-~”`¯: : : :/ · · · · · · |.………………..
- ………. | : :(,;-===-„, `\,· · · ,-`| · ·/ : : : | :,/` · · · · · · ·| ………………..
-     ……… . \ : :\, · · · · \\ · `\. ·)· / · / : :\ : :`~,_ · · · · · ./ …………………
- ………… \\,_`~.,_„,.-*\\, `/,/„/` ,/ : : :`’;-.„_ : ¯-, · · · /,…………………..
- …………..`\,,`”| : :`-,„_„))’`"` ·,/`_„,~*’` · · ( · , ,`)· ·,-; `’\,………………..
- ……………..`*-\ : : : `~----~*` / · · · · · · · · “”~”` ·/` ·( _ :)………………
- …………. ,.¬-,--\ : : : : : : : : / · · · · · · · · · ·,,-“`…..’-„,-‘……………….
- …………..| |: :*:\ : : : : : : :_/ „____„„„„,---~*`……………………………
- …………./ / : : : `~-„„„„„,.;;`,,.--`………………………………………….
- …………| | : : : :|¯ : ,/ ¯ ………………………………………………….
- ………….\,\,_,„./---~`………………………………………………………
- ………………………………………………………………………………
