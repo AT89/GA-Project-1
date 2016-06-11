@@ -41,9 +41,9 @@ function assignValue(){ // assign value and images to cards (while still ordered
 }
 function pokeImage(){
     //makes an array with object of images corresponding to the filenames
-    for (i = 1; i < 555; i++){
+    for (i = 1; i < 650; i++){
         var poke = {}
-        poke.img = "pokemon/icons/p ("+i+").ico";
+        poke.img = "pokemon/icons/"+i+".png";
         pokeIcons.push(poke);
     }
     return pokeIcons;
@@ -100,10 +100,10 @@ function draw(){
         p2Active = p2Deck[0];
 
                 t = Math.random(1);
-                y = Math.floor(t * 554);
+                y = Math.floor(t * 649);
 
                 t2 = Math.random(1);
-                y2 = Math.floor(t2 * 554);
+                y2 = Math.floor(t2 * 649);
 
             PokeActive1 = pokeIcons[y];
             PokeActive2 = pokeIcons[y2];
