@@ -7,6 +7,7 @@ body
     background-repeat: no-repeat;
     background-color: green;
     background-position-y: -340px;
+    /*Haven't seen this before*/
 }
 body.color{
     background-color: black;
@@ -30,6 +31,7 @@ h1{
     width: 80px;
     z-index: 1;
 }
+/*What's the difference between cardA and cardP? Please work on naming things semantically.*/
 .cardP {
     width: 80px;
     z-index: 1;
@@ -89,6 +91,7 @@ h1{
 #p2Deck:hover{
     -webkit-transform: scale(2);
     -ms-transform: scale(2);
+    /*These were necessary like 5 years ago for browser compatibility, but not now.*/
     transform: scale(2);
 }
 #p1Holder{
@@ -150,6 +153,8 @@ h1{
     text-align: center;
     z-index: 2;
 }
+/*Both of your `pokeHolders` have the same CSS. Why not create a single class you can use for both of them, or select them both at the same time with `#p1PokeHolder, #p2PokeHolder`?*/
+/*Code re-usability is extremely important in CSS. Without it, your code can spiral out of control very quickly.*/
 img#p1PokeIcon{
   height: 100%;
   width: 100%;
