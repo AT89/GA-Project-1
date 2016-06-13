@@ -26,7 +26,7 @@ shuffle(deck); //shuffle the deck (create button later)
 initialDeal(); //deals 26 to each player
 // stackedDeal(deck); //intiate stackedDeal (alt deal), turn off initial deal and shuffle for this to work
 
-
+// Nice job of commenting!
 function assignValue(){ // assign value and images to cards (while still ordered)
     var value = 0;
     for (i = 1; i < 53; i++){
@@ -99,8 +99,10 @@ function draw(){
         p1Active = p1Deck[0];
         p2Active = p2Deck[0];
 
+                // Create a `randomUpTo(number)` function
                 t = Math.random(1);
                 y = Math.floor(t * 649);
+                // You have to semantically name your variables.
 
                 t2 = Math.random(1);
                 y2 = Math.floor(t2 * 649);
@@ -125,6 +127,7 @@ function battle(){
                 pokeMode(); //GOTTA CATCH EM ALL
             }
         }
+        // I'd put each of the sections below in its own function to make things easier to read
         if (p1Active.value > p2Active.value){ //p1 wins
             console.log("p1 wins round");
             showWinner(p1Name); //splash win p1
@@ -190,6 +193,28 @@ function p1CreateHand(){ //create the hand on the bottom rows (for each respecti
         }
     }
 }
+/*
+var player1 = {
+    number: 1,
+    hand: [],
+    deck: [],
+    active: "",
+    spree: []
+}
+var player2 = {
+    number: 2,
+    hand: [],
+    deck: [],
+    active: "",
+    spree: []
+}
+
+function createHand(player){
+    i = 0;
+    while(i < player.deck.length) ...
+    $("p" + player.number + "Holder").append(...)
+}
+*/
 function p2CreateHand(){
     i = 0;
     while (i < p2Deck.length){
