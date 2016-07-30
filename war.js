@@ -253,7 +253,7 @@ function pokeMode(){
     }, 3000);
 
 
-//no img alts with replacement, they cant see it anyway..
+
     setTimeout(function(){
     //do replacing functions
         //replace h1 with logo
