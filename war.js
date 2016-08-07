@@ -17,8 +17,7 @@ var pokemonMode = true;
 var PokeActive1;
 var PokeActive2;
 var pokeFirst = true;
-r = 0;
-b = 0;
+
 
 assignValue(); //first assign values and images
 pokeImage(); //generate the image of the pokemon
@@ -136,7 +135,7 @@ function battle(){
             p2Spree = 0;
                 if (prize.length > 0){ //if there is an array in the prize, give it to winner!
                     p1Deck = p1Deck.concat(prize);
-                    prize.splice(0,52);
+                    prize.splice(0,52); //splice the whole array to account for multiple war scenarios
                     createPrize();
                     p1Spree++;
                     p2Spree = 0;
