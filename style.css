@@ -52,6 +52,9 @@ h1{
 #active{
   width: 300px;
   height: 300px;
+  position: absolute;
+  top: 40%;
+
 }
 #board{
     display: flex;
@@ -106,6 +109,7 @@ h1{
     position: absolute;
     right: 10%;
     display: flex;
+    top: 20%;
 }
 #prizeHolder{
     width: 100px;
