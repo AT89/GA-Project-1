@@ -21,7 +21,7 @@ body.image{
     width: 800px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 h1{
     font-size: 50px;
@@ -110,6 +110,7 @@ h1{
     right: 10%;
     display: flex;
     top: 20%;
+    /*padding-top: 100px;*/
 }
 #prizeHolder{
     width: 100px;
@@ -139,7 +140,7 @@ h1{
 #p1PokeHolder{
     height: 256px;
     width: 256px;
-    left: -50px;
+    left: 70px;
     top: 50px;
     position: relative;
     text-align: center;
@@ -148,7 +149,7 @@ h1{
 #p2PokeHolder{
     height: 256px;
     width: 256px;
-    right: -50px;
+    right: 70px;
     bottom: 50px;
     position: relative;
     text-align: center;
